@@ -39,6 +39,7 @@ que el inventario nunca se quede en cero y que las ventas fluyan sin errores.
 - Las vistas como reportes para el análisis.
 
 #### Las características técnicas principales son el uso de claves primarias y extranjeras, normalización de datos, activadores para actualización automática, vistas para informes y procedimientos almacenados.
+![](https://www.accesoriosparatiendas.com/images/estanteria-tienda-videojuegos.jpg)
 ---
 #### Los reportes que se hacen en esta base de datos son hechos directamente con vistas; en ellos se incluyen reportes para el análisis de datos.
 1. Inventario por sucursal: el inventario que hay en cada tienda.
@@ -53,5 +54,5 @@ que el inventario nunca se quede en cero y que las ventas fluyan sin errores.
 
 -------- 
 
-###### Este proyecto es de carácter educativo.
+###### Este proyecto es de carácter educativo sin fines de lucro.
 
