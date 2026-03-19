@@ -55,4 +55,6 @@ que el inventario nunca se quede en cero y que las ventas fluyan sin errores.
 -------- 
 
 ###### Este proyecto es de carácter educativo sin fines de lucro.
+<img width="316" height="160" alt="image" src="https://github.com/user-attachments/assets/b92dd14c-c53b-4e50-9610-9b4a61aa9118" />
+
 
