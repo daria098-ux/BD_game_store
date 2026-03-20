@@ -1,60 +1,61 @@
-# Sistema de Base de Datos - Tienda de Videojuegos
-#### ¡Bienvenido! 
+# Database System - Video Game Store
+#### ¡Welcome! 
 
-Este proyecto nace de un problema ficticio que fue planteado en clase; consiste en el diseño e implementación de una base de datos para una tienda de videojuegos
-con múltiples sucursales que tiene múltiples necesidades, como el poder organizar el caos que supone gestionar las tiendas y permitir que los productos lleguen a los jugadores,
-que el inventario nunca se quede en cero y que las ventas fluyan sin errores.
+This project arises from a fictional problem proposed in class; it consists of the design and implementation of a database for a video game store
+with multiple branches that has various needs, such as organizing the chaos involved in managing the stores and ensuring that products reach players,
+that inventory never runs out, and that sales flow without errors.
 
-##### El sistema está basado en un modelo relacional y le podemos poner el objetivo de gestionar las principales entidades que pudimos identificar para el negocio.
-| Productos, en este caso videojuegos y accesorios, etc.  |
+##### The system is based on a relational model, and its objective is to manage the main entities identified for the business.
+| Products, in this case video games and accessories, etc.  |
 | ------------ |
-|Clientes los principales compradores en las tiendas.  |
-|Empleados que trabajan en cada una de las sucursales. |
-|Sucursales que hay en esta cadena de tiendas.  |
-|Inventario por cada sucursal. |
-|Productos, en este caso videojuegos y accesorios, etc.  |
-|Ventas de cada sucursal.|
-|Proveedores que tiene la cadena de tienda en general  |
-|Almacén de todas las tiendas. |
-|Boletos de cada compra. |
-|Roles de los empleados. |
-|Departamentos que hay en cada sucursal.|
+|Customers, the main buyers in the stores. |
+|Employees who work in each of the branches. |
+|Branches that exist in this chain of stores.  |
+|Inventory for each branch. |
+|Sales for each branch|
+|Suppliers that the store chain has in general  |
+|Warehouse for all stores. |
+|Receipts for each purchase. |
+|Employee roles. |
+|Departments in each branch.|
 
 ---
 
-#### Las funcionalidades que queremos que tenga este sistema en general:
+#### The functionalities we want this system to have in general:
 
-- Poder tener un control de inventario por sucursal.
+- Ability to maintain inventory control per branch.
 
-- Tener un registro de ventas con detalles.
+- Keep detailed sales records.
 
-- Las relaciones de productos con proveedores
+- Manage relationships between products and suppliers.
 
-- La auditoría de operaciones que se hacen.
+- Audit the operations performed.
 
-- Uso de triggers para automatización.
+- Use of triggers for automation.
 
-- Procedimientos almacenados para inserciones.
+- Stored procedures for insert operations.
 
-- Las vistas como reportes para el análisis.
+- Views as reports for analysis.
 
-#### Las características técnicas principales son el uso de claves primarias y extranjeras, normalización de datos, activadores para actualización automática, vistas para informes y procedimientos almacenados.
+
+
+#### The main technical features include the use of primary and foreign keys, data normalization, triggers for automatic updates, views for reporting, and stored procedures.
 ![](https://www.accesoriosparatiendas.com/images/estanteria-tienda-videojuegos.jpg)
 ---
-#### Los reportes que se hacen en esta base de datos son hechos directamente con vistas; en ellos se incluyen reportes para el análisis de datos.
-1. Inventario por sucursal: el inventario que hay en cada tienda.
+#### The reports generated in this database are created directly using views; they include reports for data analysis.
+1. Inventory by branch: the inventory available in each store.
 
-2. Reporte de ventas por cliente: ¿Quiénes son nuestros clientes más recurrentes?
+2. Sales report by customer: Who are our most frequent customers?
 
-3. Reporte productos más vendidos: ¿Cuáles son los productos más vendidos en todas las sucursales?
+3. Best-selling products report: Which products are the most sold across all branches?
 
-4. Reporte fidelidad: ¿Quiénes son nuestros clientes más recurrentes?
+4. Loyalty report: Who are our most frequent customers?
 
-5. Reporte stock crítico: ¿Qué sucursal necesita reabastecimiento urgente?
+5. Critical stock report: Which branch needs urgent restocking?
 
 -------- 
 
-###### Este proyecto es de carácter educativo sin fines de lucro.
+###### This project is for educational purposes only and not for profit.
 <img width="316" height="160" alt="image" src="https://github.com/user-attachments/assets/b92dd14c-c53b-4e50-9610-9b4a61aa9118" />
 
 
