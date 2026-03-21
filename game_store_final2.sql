@@ -115,64 +115,63 @@ CREATE TABLE Audit (
 DELIMITER //
 -- Roles
 CREATE TRIGGER tr_roles_insert AFTER INSERT ON Roles FOR EACH ROW 
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Insert", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Insert", User());
 
 CREATE TRIGGER tr_roles_update AFTER UPDATE ON Roles FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Update", User()) 
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Update", User());
 
 CREATE TRIGGER tr_roles_delete AFTER DELETE ON Roles FOR EACH ROW 
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Delete", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Delete", User());
 
 -- Categories
 CREATE TRIGGER tr_categories_insert AFTER INSERT ON Categories FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Categories", "Insert", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Categories", "Insert", User());
 
 CREATE TRIGGER tr_categories_update AFTER UPDATE ON Categories FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Categories", "Update", User()) 
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Categories", "Update", User()); 
 
 CREATE TRIGGER tr_categories_delete AFTER DELETE ON Categories FOR EACH ROW 
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Categories", "Delete", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Categories", "Delete", User());
 
 -- Suppliers
 CREATE TRIGGER tr_supplier_insert AFTER INSERT ON Suppliers FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Suppliers", "Insert", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Suppliers", "Insert", User());
 
 CREATE TRIGGER tr_supplier_update AFTER UPDATE ON Suppliers FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Suppliers", "Update", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Suppliers", "Update", User());
 
 CREATE TRIGGER tr_supplier_delete AFTER DELETE ON Suppliers FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Suppliers", "Delete", User())
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Suppliers", "Delete", User());
 
 -- Schedules
-CREATE TRIGGER tr_schedules_insert AFTER INSERT IN Schedules FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Schedules", "Insert", User())
+CREATE TRIGGER tr_schedules_insert AFTER INSERT on Schedules FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Schedules", "Insert", User());
 
-CREATE TRIGGER tr_schedules_update AFTER UPDATE IN Schedules FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Schedules", "Update", User())
+CREATE TRIGGER tr_schedules_update AFTER UPDATE on Schedules FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Schedules", "Update", User());
 
-CREATE TRIGGER tr_schedules_delete AFTER DELETE IN Schedules FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Schedules", "Delete", User())
+CREATE TRIGGER tr_schedules_delete AFTER DELETE on Schedules FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Schedules", "Delete", User());
 
 -- Branches 
 CREATE TRIGGER tr_branches_insert AFTER INSERT ON Branches FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Insert", User()) 
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Insert", User()); 
 
 CREATE TRIGGER tr_branches_update AFTER UPDATE ON Branches FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Update", User()) 
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Update", User());
 
 CREATE TRIGGER tr_branches_delete AFTER DELETE ON Branches FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Delete", User()) 
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Delete", User());
 
 -- Departaments 
-CREATE TABLE tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User())
+CREATE TRIGGER tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User());
 
-CREATE TABLE tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User())
+CREATE TRIGGER tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User());
 
-CREATE TABLE tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User())
-		
+CREATE TRIGGER tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User());
  -- Employees
 CREATE TRIGGER tr_employee_insert AFTER INSERT ON Employees FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Employees","Insert",USER());
@@ -224,14 +223,14 @@ CREATE TRIGGER tr_tickets_delete AFTER DELETE ON Tickets FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Tickets","Delete",USER());
 
 -- Tickets_Details
-CREATE TRIGGER tr_tickets_details_insert AFTER INSERT ON Tickets_Details FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Tickets_Details","Insert",USER());
+CREATE TRIGGER tr_tickets_detalis_insert AFTER INSERT ON Ticket_Datalis FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Ticket_Datalis","Insert",USER());
 
-CREATE TRIGGER tr_tickets_details_update AFTER UPDATE ON Tickets_Details FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Tickets_Details","Update",USER());
+CREATE TRIGGER tr_tickets_detalis_update AFTER UPDATE ON Ticket_Datalis FOR EACH ROW
+INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Ticket_Datalis","Update",USER());
 
-CREATE TRIGGER tr_tickets_details_delete AFTER DELETE ON Tickets_Details FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Tickets_Details","Delete",USER());
+CREATE TRIGGER tr_tickets_detalis_delete AFTER DELETE ON Ticket_Datalis FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Ticket_Datalis","Delete",USER());
 
 DELIMITER //
 
@@ -625,3 +624,23 @@ INSERT INTO Ticket_Datalis (quantity, unit_price, id_ticket, id_product)
 VALUES (2, 15.99, 10, 36);
 INSERT INTO Ticket_Datalis (quantity, unit_price, id_ticket, id_product) 
 VALUES (1, 140.00, 10, 37);
+
+
+-- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
+-- view start
+-- inventory by branch: the inventory available in each store
+create view vw_inventory_by_branch as
+select b.name_ as Branch, p.name_ as Product, i.stock as current_stock
+from Inventory i join Branches b on i.id_branch = b.id_branch
+join Products p on i.id_product = p.id_product;
+-- ============================================================================
+select * from vw_inventory_by_branch;
+-- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
+-- sales report by customer
+create view vw_sales_by_customer as
+select c.name_ as client, sum(t.total_amount) as total_spent
+from Clients c
+join Tickets t on c.id_client = t.id_client group by c.id_client;
+-- ============================================================================
+select * from vw_sales_by_customer;
+
