@@ -673,10 +673,24 @@ select * from vw_critical_stock;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- initiation of procedures for each entity
 -- ============================================================================ branches
--- --------------------------------------------------------------------------------------- insert
+-- ---------------------------------------------------------------------------------------insert
+delimiter //
+create procedure sp_create_branch(in p_name varchar(250), in p_address text, in p_id_sch int)
+begin insert into branches(name_, address, id_schedule) values (p_name, p_address, p_id_sch);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_branch(in p_id int)
+begin select * from branches where id_branch = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_branch(in p_id int, in p_name varchar(250), in p_address text)
+begin update branches set name_ = p_name, address = p_address where id_branch = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_branch(in p_id int)
+begin delete from branches where id_branch = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ clients
 -- ---------------------------------------------------------------------------------------insert
@@ -720,57 +734,183 @@ delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ categories
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_category(in p_name varchar(250))
+begin insert into categories(name_) values (p_name);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_category(in p_id int)
+begin select * from categories where id_category = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_category(in p_id int, in p_status boolean)
+begin update categories set status_ = p_status where id_category = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_category(in p_id int)
+begin delete from categories where id_category = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ employees
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_employee(in p_name varchar(250), in p_phone varchar(20), in p_day date, in p_rol int, in p_dep int)
+begin insert into employees(name_, phone, contract_day, id_rol, id_departments) values (p_name, p_phone, p_day, p_rol, p_dep);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_employee(in p_id int)
+begin select * from employees where id_employee = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_employee(in p_id int, in p_status enum('Active','Inactive','On Leave'))
+begin update employees set status_ = p_status where id_employee = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_employee(in p_id int)
+begin delete from employees where id_employee = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ inventory
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_inventory(in p_stock int, in p_prod int, in p_branch int)
+begin insert into inventory(stock, id_product, id_branch) values (p_stock, p_prod, p_branch);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_inventory(in p_id int)
+begin select * from inventory where id_inventory = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_stock(in p_id int, in p_stock int)
+begin update inventory set stock = p_stock where id_inventory = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_inventory(in p_id int)
+begin delete from inventory where id_inventory = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ products
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_product(in p_name varchar(250), in p_price decimal(10,2), in p_cat int, in p_supp int)
+begin insert into products(name_, price, id_category, id_supplier) values (p_name, p_price, p_cat, p_supp);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_product(in p_id int)
+begin select * from products where id_product = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_product(in p_id int, in p_name varchar(250), in p_price decimal(10,2))
+begin update products set name_ = p_name, price = p_price where id_product = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_product(in p_id int)
+begin delete from products where id_product = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ roles
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_rol(in p_name varchar(250), in p_salary decimal(10,2), in p_desc text)
+begin insert into roles(name_, salary, description_) values (p_name, p_salary, p_desc);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_rol(in p_id int)
+begin select * from roles where id_rol = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_rol(in p_id int, in p_name varchar(250), in p_salary decimal(10,2))
+begin update roles set name_ = p_name, salary = p_salary where id_rol = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_rol(in p_id int)
+begin delete from roles where id_rol = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ schedules
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_schedule(in p_start time, in p_end time, in p_days varchar(250))
+begin insert into schedules(start_time, end_time, work_days) values (p_start, p_end, p_days);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_schedule(in p_id int)
+begin select * from schedules where id_schedule = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_schedule(in p_id int, in p_start time, in p_end time, in p_days varchar(250))
+begin update schedules set start_time = p_start, end_time = p_end, work_days = p_days where id_schedule = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_schedule(in p_id int)
+begin delete from schedules where id_schedule = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ suppliers
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_supplier(in p_name varchar(250), in p_phone varchar(50), in p_email varchar(250))
+begin insert into suppliers(name_, phone, email) values (p_name, p_phone, p_email);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_supplier(in p_id int)
+begin select * from suppliers where id_supplier = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_supplier(in p_id int, in p_name varchar(250), in p_phone varchar(50), in p_email varchar(250))
+begin update suppliers set name_ = p_name, phone = p_phone, email = p_email where id_supplier = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_supplier(in p_id int)
+begin delete from suppliers where id_supplier = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ ticket_datalis
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_detail(in p_qty int, in p_price decimal(10,2), in p_ticket int, in p_prod int)
+begin insert into ticket_datalis(quantity, unit_price, id_ticket, id_product) values (p_qty, p_price, p_ticket, p_prod);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_detail(in p_id int)
+begin select * from ticket_datalis where id_detail = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_detail(in p_id int, in p_qty int, in p_price decimal(10,2))
+begin update ticket_datalis set quantity = p_qty, unit_price = p_price where id_detail = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_detail(in p_id int)
+begin delete from ticket_datalis where id_detail = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 -- ============================================================================ tickets
 -- --------------------------------------------------------------------------------------- insert
+delimiter //
+create procedure sp_create_ticket(in p_total decimal(10,2), in p_client int, in p_emp int)
+begin insert into tickets(total_amount, id_client, id_employee) values (p_total, p_client, p_emp);
+end //
 -- --------------------------------------------------------------------------------------- select
+create procedure sp_read_ticket(in p_id int)
+begin select * from tickets where id_ticket = p_id;
+end //
 -- --------------------------------------------------------------------------------------- update
+create procedure sp_update_ticket(in p_id int, in p_total decimal(10,2), in p_client int)
+begin update tickets set total_amount = p_total, id_client = p_client where id_ticket = p_id;
+end //
 -- --------------------------------------------------------------------------------------- delete
+create procedure sp_delete_ticket(in p_id int)
+begin delete from tickets where id_ticket = p_id;
+end //
+delimiter ;
 -- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 
 
