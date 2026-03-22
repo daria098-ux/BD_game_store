@@ -165,13 +165,13 @@ INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Branches", "Delete
 
 -- Departaments 
 CREATE TRIGGER tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User());
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", USER());
 
-CREATE TRIGGER tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User());
+CREATE TRIGGER tr_departments_update AFTER UPDATE ON Departments FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Update", USER());
 
-CREATE TRIGGER tr_departments_insert AFTER INSERT ON Departments FOR EACH ROW
-INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Insert", User());
+CREATE TRIGGER tr_departments_delete AFTER DELETE ON Departments FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Delete", USER());
  -- Employees
 CREATE TRIGGER tr_employee_insert AFTER INSERT ON Employees FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Employees","Insert",USER());
@@ -643,4 +643,32 @@ from Clients c
 join Tickets t on c.id_client = t.id_client group by c.id_client;
 -- ============================================================================
 select * from vw_sales_by_customer;
+-- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
+-- Best-selling products report
+create view vw_best_selling_products as
+select p.name_ as product, sum(td.quantity) as total_units_sold
+from Ticket_Datalis td
+join Products p on td.id_product = p.id_product
+group by p.id_product;
+-- ============================================================================
+select * from vw_best_selling_products;
+-- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
+-- loyalty report: Who are our most frequent customers?
+create view vw_client_loyalty as
+select c.name_ as client, count(t.id_ticket) as visit_count
+from Clients c
+join Tickets t on c.id_client = t.id_client
+group by c.id_client;
+-- ============================================================================
+select * from vw_client_loyalty;
+-- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
+-- critical stock report: Which branch needs urgent restocking?
+create view vw_critical_stock as
+select b.name_ as branch, p.name_ as product, i.stock
+from Inventory i
+join Branches b on i.id_branch = b.id_branch join Products p on i.id_product = p.id_product
+where i.stock < 5;
+-- ============================================================================
+select * from vw_critical_stock;
+-- -----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*-----*
 
