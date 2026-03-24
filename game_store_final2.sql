@@ -112,7 +112,6 @@ CREATE TABLE Audit (
 );
 
 -- Creations Triggers 
-DELIMITER //
 -- Roles
 CREATE TRIGGER tr_roles_insert AFTER INSERT ON Roles FOR EACH ROW 
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Roles", "Insert", User());
@@ -172,12 +171,13 @@ INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Upd
 
 CREATE TRIGGER tr_departments_delete AFTER DELETE ON Departments FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Departments", "Delete", USER());
+
  -- Employees
 CREATE TRIGGER tr_employee_insert AFTER INSERT ON Employees FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Employees","Insert",USER());
  
 CREATE TRIGGER tr_employees_update AFTER UPDATE ON Employees FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user) VALUES ("Employees","Update",USER());
+INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Employees","Update",USER());
 
 CREATE TRIGGER tr_employees_delete AFTER DELETE ON Employees FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Employees","Delete",USER());
@@ -187,7 +187,7 @@ CREATE TRIGGER tr_products_insert AFTER INSERT ON Products FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Products","Insert",USER());
 
 CREATE TRIGGER tr_products_update AFTER UPDATE ON Products FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Products","Update",USER());
+INSERT INTO Audit (affected_table, action_, db_user)  VALUES ("Products","Update",USER());
 
 CREATE TRIGGER tr_products_delete AFTER DELETE ON Products FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Products","Delete",USER());
@@ -197,7 +197,7 @@ CREATE TRIGGER tr_inventory_insert AFTER INSERT ON Inventory FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Inventory","Insert",USER());
 
 CREATE TRIGGER tr_inventory_update AFTER UPDATE ON Inventory FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Inventory","Update",USER());
+INSERT INTO Audit (affected_table, action_, db_user)  VALUES ("Inventory","Update",USER());
 
 CREATE TRIGGER tr_inventory_delete AFTER DELETE ON Inventory FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Inventory","Delete",USER());
@@ -207,7 +207,7 @@ CREATE TRIGGER tr_clients_insert AFTER INSERT ON Clients FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Clients","Insert",USER());
 
 CREATE TRIGGER tr_clients_update AFTER UPDATE ON Clients FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Clients","Update",USER());
+INSERT INTO Audit (affected_table, action_, db_user)  VALUES ("Clients","Update",USER());
 
 CREATE TRIGGER tr_clients_delete AFTER DELETE ON Clients FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Clients","Delete",USER());
@@ -217,22 +217,21 @@ CREATE TRIGGER tr_tickets_insert AFTER INSERT ON Tickets FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Tickets","Insert",USER());
 
 CREATE TRIGGER tr_tickets_update AFTER UPDATE ON Tickets FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Tickets","Update",USER());
+INSERT INTO Audit (affected_table, action_, db_user)  VALUES ("Tickets","Update",USER());
 
 CREATE TRIGGER tr_tickets_delete AFTER DELETE ON Tickets FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Tickets","Delete",USER());
 
 -- Tickets_Details
-CREATE TRIGGER tr_tickets_detalis_insert AFTER INSERT ON Ticket_Datalis FOR EACH ROW
+CREATE TRIGGER tr_tickets_details_insert AFTER INSERT ON Ticket_Datalis FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Ticket_Datalis","Insert",USER());
 
-CREATE TRIGGER tr_tickets_detalis_update AFTER UPDATE ON Ticket_Datalis FOR EACH ROW
-INSERT INTO Audit (affectes_table, action_, db_user)  VALUES ("Ticket_Datalis","Update",USER());
+CREATE TRIGGER tr_tickets_details_update AFTER UPDATE ON Ticket_Datalis FOR EACH ROW
+INSERT INTO Audit (affected_table, action_, db_user)  VALUES ("Ticket_Datalis","Update",USER());
 
-CREATE TRIGGER tr_tickets_detalis_delete AFTER DELETE ON Ticket_Datalis FOR EACH ROW
+CREATE TRIGGER tr_tickets_details_delete AFTER DELETE ON Ticket_Datalis FOR EACH ROW
 INSERT INTO Audit (affected_table, action_, db_user) VALUES ("Ticket_Datalis","Delete",USER());
 
-DELIMITER //
 
 -- Start of insertions
 -- Roles 
@@ -410,6 +409,13 @@ INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ('Pokemon T
 INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ('Gaming Mouse Pad RGB', 24.99, 6, 2);
 INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ('Control DualSense White', 69.99, 5, 2);
 INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ('Super Mario Plush', 19.99, 6, 4);
+INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ("Gaming Monitor 4K", 399.99, 5, 1);
+INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ("Mechanical Keyboard RGB", 85.00, 3, 4);
+INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ("Gaming Chair Pro", 250.00, 3, 5);
+INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ("Mousepad XL", 25.00, 3, 4);
+INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ("Streaming Microphone", 120.00, 3, 4);
+INSERT INTO Products (name_, price, id_category, id_supplier) VALUES ("HDMI 2.1 Cable", 19.99, 3, 1);
+
 
 -- Inventory
 INSERT INTO Inventory (stock, id_product, id_branch) VALUES (10, 1, 1); 
