@@ -53,7 +53,11 @@ that inventory never runs out, and that sales flow without errors.
 
 5. Critical stock report: Which branch needs urgent restocking?
 
--------- 
+---
+##### Entity-relationship diagram
+<img width="600" height="400" alt="image" src="Diagram.png"/>
+
+---
 
 ###### This project is for educational purposes only and not for profit.
 <img width="316" height="160" alt="image" src="https://github.com/user-attachments/assets/b92dd14c-c53b-4e50-9610-9b4a61aa9118" />
